@@ -5,34 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <title>Pomodoro Technique</title>
+    <title>Pomocode Proyect</title>
 </head>
 
 <body>
-    <h1>Pomodoro Technique</h1>
-    <div class="container">
-        <div class="info">
-            <p>¡Bienvenido a nuestra página web con un toque de eficiencia y enfoque! Aquí, encontrarás una herramienta
-                valiosa:
-                nuestro reloj Pomodoro. Este temporizador inteligente está diseñado para potenciar tu productividad al
-                máximo, siguiendo
-                la famosa técnica de gestión del tiempo. Ya sea que estés trabajando en un proyecto importante,
-                estudiando para un
-                examen o buscando lograr tus objetivos, nuestro reloj Pomodoro te guiará a través de intervalos de
-                trabajo concentrado y
-                pausas revitalizantes. ¡Prepárate para sumergirte en la concentración y llevar tus tareas al siguiente
-                nivel!
-            </p>
-        </div>
-        <div class="clock-container">
-            <div class="clock">
+    <main>
+        <h1>Pomocode Proyect</h1>
+        <hr>
+        <div class="content">
+            <div class="welcome">
+                <p>Hola! 👋</p>
+                <p>Bienvenido a Pomocode.
+                    Gracias a esta técnica de estudio llamada "pomodoro" podrás organizar tu tiempo
+                    y estar más centrado en sus tareas diarias.</p>
+                <div class="btns">
+                    <button class="btn-welcome">Conocer más 🤓</button>
+                    <button class="btn-welcome">Cómo usarlo? 🚀</button>
+                </div>
             </div>
-            <button id="btn-start" class="btn-clock">Start</button>
-            <button id="btn-stop" class="btn-clock">Stop</button>
-            <button id="btn-reset" class="btn-clock">Resetear</button>
-            <p id="periods">Count: <span>0</span></p>
+            <div class="pomodoro">
+                <div class="timer">
+                    <!-- <p>25:00</p> -->
+                </div>
+                <ul>
+                    <li class="focus">Concentración</li>
+                    <li class="relax">Descanso</li>
+                </ul>
+                <div class="btns-timer-container">
+                    <button class="btn-timer" id="start-timer">Comenzar</button>
+                    <button class="btn-timer" id="reset-timer">Resetear</button>
+                </div>
+                <div class="period-container">
+                    <p class="periods-text">Periodo/s: <span>0</span></p>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 </body>
 <script src="./js/index.js" type="module"></script>
 
