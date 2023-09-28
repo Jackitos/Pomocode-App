@@ -1,132 +1,73 @@
 const d = document
 export default function clock(clock, btnPlay, btnReset) {
-    let timeWorkInterval, // variable de intervalo de trabajo,
-        timeRestInterval, // variable de intervalo de descanso
-        totalWorkTime = 10, // tiempo total del intervalo de trabajo,
-        totalRestTime = 20, // tiempo total del intervalo de descanso
-        periods = 0 // cantidad de periodos
+    const times = {
+        work: 10,
+        rest: 5
+    }
+
+    let currentInterval,
+        currentIntervalType = "work", // tipo de intervalo
+        periods = 0; // cantidad de periodos
 
     /* funcion que actualiza el reloj*/
-    function updateTimerDisplay(timeStage) {
-        const minutes = (Math.floor(timeStage / 60)) < 10 ? "0" + (Math.floor(timeStage / 60)) : (Math.floor(timeStage / 60)),
-            seconds = (timeStage % 60) < 10 ? "0" + (timeStage % 60) : (timeStage % 60)
+    function updateClockDisplay(time) {
+        const minutes = (Math.floor(time / 60)),
+            seconds = time % 60,
+            formattedMinutes = minutes < 10 ? "0" + minutes : minutes,
+            formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+        d.querySelector(clock).innerHTML = `<p><span>${formattedMinutes}:${formattedSeconds}</span></p>` // actualiza el reloj
+    }
 
-        d.querySelector(clock).innerHTML = `<p><span>${minutes}:${seconds}</span></p>` // actualiza el reloj
+    function toggleButtonState(disabled) {
+        d.querySelector(btnPlay).disabled = disabled
+        d.querySelector(btnPlay).classList.toggle("btn-timer-stop")
     }
 
     // funcion que inicia el intervalo
-    function startInterval() {
-        timeWorkInterval = setInterval(() => {
-            if (totalWorkTime > 0) {
-                totalWorkTime--
-                updateTimerDisplay(totalWorkTime)
-            }
-            else {
-                stopWorkInterval(timeWorkInterval)
-                timeRestInterval = setInterval(() => {
-                    if (totalRestTime > 0) {
-                        totalRestTime--
-                        updateTimerDisplay(totalRestTime)
-                    }
-                    else {
-                        stopRestInterval(timeRestInterval)
-                        periods++ // incrementa los periodos
-                        d.querySelector(".periods-text").innerText = `Periodo/s: ${periods}` // actualiza el contador de periodos
-                        updateTimerDisplay(totalWorkTime)
-                    }
-                }, 1000)
-            }
-            d.querySelector(btnPlay).disabled = true // deshabilita el boton de inicio
-            d.querySelector(btnPlay).classList.add("btn-timer-stop")
-        }, 1000)
-    }
+    function startPomodoro() {
+        if (currentInterval) {
+            clearInterval(currentInterval);
+        }
 
-    /* Funcion que detiene el intervalo de trabajo */
-    function stopWorkInterval(interval) {
-        clearInterval(interval) // detiene el intervalo
-        totalWorkTime = 10 // reinicia el tiempo
-        // updateTimerDisplay(totalWorkTime) // actualiza el reloj
-        d.querySelector(btnPlay).disabled = false // habilita el boton de inicio
-    }
+        currentInterval = setInterval(() => {
+            if (times[currentIntervalType] > 0) {
+                times[currentIntervalType]--;
+                updateClockDisplay(times[currentIntervalType]);
+            } else {
+                clearInterval(currentInterval); // Detener el temporizador actual
 
-    /* Funcion que detiene el intervalo de descanso*/
-    function stopRestInterval(interval) {
-        clearInterval(interval) // detiene el intervalo
-        totalRestTime = 20 // reinicia el tiempo
-        updateTimerDisplay(totalRestTime) // actualiza el reloj
-        d.querySelector(btnPlay).disabled = false // habilita el boton de inicio
+                if (currentIntervalType === "work") {
+                    currentIntervalType = "rest";
+                    times[currentIntervalType] = 5; // Establecer el tiempo de descanso
+                } else {
+                    currentIntervalType = "work";
+                    periods++;
+                    d.querySelector(".periods-text").innerText = `Periodo/s: ${periods}`;
+                    times[currentIntervalType] = 10; // Establecer el tiempo de trabajo
+                }
+
+                updateClockDisplay(times[currentIntervalType]);
+                startPomodoro(); // Comenzar el siguiente intervalo
+            }
+        }, 1000);
+        toggleButtonState(true);
     }
 
     /* funcion que reinicia el reloj pomodoro completo */
-    function resetTimer() {
-        stopWorkInterval(timeWorkInterval) // detiene el intervalo
-        stopRestInterval(timeRestInterval) // detiene el intervalo
-        totalWorkTime = 10 // reinicia el tiempo
-        totalRestTime = 20 // reinicia el tiempo
-        periods = 0 // reinicia los periodos
-        updateTimerDisplay(totalWorkTime) // actualiza el reloj
-        d.querySelector(".periods-text").innerText = `Periodo/s: ${periods}` // actualiza el contador de periodos
+    function resetClock() {
+        clearInterval(currentInterval);
+        times.work = 10;
+        times.rest = 5;
+        periods = 0; // reinicia los periodos
+        currentIntervalType = "work"; // reinicia el tipo de intervalo
+        updateClockDisplay(times.work); // actualiza el reloj
+        d.querySelector(".periods-text").innerText = `Periodo/s: ${periods}`; // actualiza el contador de periodos
+        toggleButtonState(false);
     }
 
-    updateTimerDisplay(totalWorkTime) // actualiza el reloj al cargar la pagina por primera vez
+    updateClockDisplay(times.work) // actualiza el reloj al cargar la pagina por primera vez
 
     /* botones de inicio y fin del intervalo */
-    d.addEventListener("click", e => {
-        if (e.target.matches(btnPlay)) startInterval()
-        if (e.target.matches(btnReset)) resetTimer()
-    })
+    d.querySelector(btnPlay).addEventListener("click", startPomodoro);
+    d.querySelector(btnReset).addEventListener("click", resetClock);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if (totalWorkTime > 0) {
-//     totalWorkTime--; // decrementa el tiempo
-//     updateTimerDisplay(); // actualiza el reloj
-// }
-// else {
-//     stopInterval(timeWorkInterval)
-//     timeRestInterval = setInterval(() => {
-//         if (totalRestTime > 0) {
-//             totalRestTime--
-//             updateTimerRestDisplay()
-//         }
-//         else {
-
-//         }
-//     }, 1000)
-// }
-
-
-
-
-// stopInterval(timeWorkInterval)
-// timeRestInterval = setInterval(() => {
-//     totalRestTime--
-//     updateTimerRestDisplay()
-//     if (totalRestTime > 0) {
-//         totalRestTime--
-//         updateTimerRestDisplay()
-//     } else {
-//         stopInterval(timeRestInterval)
-//     }
-// }, 1000)
