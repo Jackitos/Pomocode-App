@@ -1,13 +1,40 @@
 const d = document
+const intervalTypes = Object.freeze({
+	work: Symbol("work"),
+	rest: Symbol("rest"),
+});
+
 export default function clock(clock, btnPlay, btnReset) {
-    const times = {
-        work: 10,
-        rest: 5
+    const work = {
+        defaultDuration: 10,
+        actualDuration: 10,
+        reset() {
+            this.actualDuration = this.defaultDuration;
+        },
+        continueInterval() {
+            currentIntervalType = rest;
+            currentIntervalType.reset();
+            startPomodoro();
+        }
+    }
+    
+    const rest = {
+        defaultDuration: 5,
+        actualDuration: 5,
+        reset() {
+            this.actualDuration = this.defaultDuration;
+        },
+        continueInterval() {
+            currentIntervalType = work;
+            periods++;
+            d.querySelector(".periods-text").innerText = `Periodo/s: ${periods}`;
+            currentIntervalType.reset();
+        }
     }
 
     let currentInterval,
-        currentIntervalType = "work", // tipo de intervalo
-        periods = 0; // cantidad de periodos
+    currentIntervalType = work, // tipo de intervalo
+    periods = 0; // cantidad de periodos
 
     /* funcion que actualiza el reloj*/
     function updateClockDisplay(time) {
@@ -25,29 +52,14 @@ export default function clock(clock, btnPlay, btnReset) {
 
     // funcion que inicia el intervalo
     function startPomodoro() {
-        if (currentInterval) {
-            clearInterval(currentInterval);
-        }
-
         currentInterval = setInterval(() => {
-            if (times[currentIntervalType] > 0) {
-                times[currentIntervalType]--;
-                updateClockDisplay(times[currentIntervalType]);
+            if (currentIntervalType.actualDuration > 0) {
+                currentIntervalType.actualDuration--;
+                updateClockDisplay(currentIntervalType.actualDuration);
             } else {
                 clearInterval(currentInterval); // Detener el temporizador actual
-
-                if (currentIntervalType === "work") {
-                    currentIntervalType = "rest";
-                    times[currentIntervalType] = 5; // Establecer el tiempo de descanso
-                } else {
-                    currentIntervalType = "work";
-                    periods++;
-                    d.querySelector(".periods-text").innerText = `Periodo/s: ${periods}`;
-                    times[currentIntervalType] = 10; // Establecer el tiempo de trabajo
-                }
-
-                updateClockDisplay(times[currentIntervalType]);
-                startPomodoro(); // Comenzar el siguiente intervalo
+                currentIntervalType.continueInterval();
+                updateClockDisplay(currentIntervalType.actualDuration);
             }
         }, 1000);
         toggleButtonState(true);
@@ -56,16 +68,15 @@ export default function clock(clock, btnPlay, btnReset) {
     /* funcion que reinicia el reloj pomodoro completo */
     function resetClock() {
         clearInterval(currentInterval);
-        times.work = 10;
-        times.rest = 5;
         periods = 0; // reinicia los periodos
-        currentIntervalType = "work"; // reinicia el tipo de intervalo
-        updateClockDisplay(times.work); // actualiza el reloj
+        currentIntervalType = work; // reinicia el tipo de intervalo
+        currentIntervalType.reset();
+        updateClockDisplay(currentIntervalType.defaultDuration); // actualiza el reloj
         d.querySelector(".periods-text").innerText = `Periodo/s: ${periods}`; // actualiza el contador de periodos
         toggleButtonState(false);
     }
 
-    updateClockDisplay(times.work) // actualiza el reloj al cargar la pagina por primera vez
+    updateClockDisplay(currentIntervalType.defaultDuration) // actualiza el reloj al cargar la pagina por primera vez
 
     /* botones de inicio y fin del intervalo */
     d.querySelector(btnPlay).addEventListener("click", startPomodoro);
