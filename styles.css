@@ -5,269 +5,292 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-body{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #434877;
-}
-
-main{
-    /* background-color: #9CBBD8; */
-    width: auto;
-    height: auto;
-}
-
-h1{
-    color:azure;
-    font-size: 3rem;
-}
-
-hr{
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-.content{
-    width: 800px;
-    height: 500px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top:10px;
-    gap: 10px;
-}
-
-.welcome{
-    width: 100%;
-    height: 100%;
-    background-color: #BBD5ED;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.20);
-}
-
-.pomodoro{
-    width: 100%;
-    height: 100%;
-    background-color: #BBD5ED;
-    border-radius: 10px;
-    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.20);
-}
-
-p{
-    color: #434877;
-    font-size: 2rem;
-    font-weight: 500;
-    text-align: start;
-}
-
-.btns{
-    width: 100%;
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    gap: 10px;
-}
-
-.btn-welcome{
-    width: 150px;
-    height: 50px;
-    border-radius:10px;
-    background-color: #1E96FC;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-    border-style: none;
-    color:azure;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.btn-welcome:hover{
-    background-color: #434877;
-    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.20);
-}
-
-.timer{
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background-color: #9CBBD8;
-    border-radius: 10px;
-    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.20);
-}
-
-ul{
-    width: 100%;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top:20px;
-    padding: 10px;
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow: hidden;
     position: relative;
+    background-image:linear-gradient(80deg, rgb(89,46,131), rgb(120, 139, 255));;
 }
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+#bottom-left {
+    left: 0;
+    bottom: 0;
+    width: 800px;
+    height: 800px;
+    background: linear-gradient(80deg, rgb(77, 45, 82), rgb(3, 37, 78, .2)), url(''); /* Fondo del círculo */
+    filter: blur(100px);
+}
+
+#up-right {
+    right: 0;
+    top: 0;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(80deg, rgb(84, 101, 255), rgb(120, 139, 255, .4)), url(''); /* Fondo del círculo */
+    filter: blur(80px);
+}
+
+#up-left {
+    left: 0;
+    top: 0;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(80deg, rgb(42, 30, 82, .2), rgb(89, 46, 131)), url(''); /* Fondo del círculo */
+    filter: blur(80px);
+}
+
+#bottom-right {
+    right: 0;
+    bottom: 0;
+    width: 800px;
+    height: 800px;
+    background: linear-gradient(80deg, rgb(36, 32, 56), rgb(37, 40, 61, .3)), url(''); /* Fondo del círculo */
+    filter: blur(80px);
+}
+
+main {
+    position: relative;
+    color: white; 
+    margin: 80px; 
+    /* background-color: #1E96FC; */
+}
+
+h1 {
+    font-size: 8em;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    height: 20px;
+    border: 0;
+    width: 80%;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #788BFF 8.34%, #9CBBD8);
+}
+
+h2 {
+    width: 12em; /* Ajusta el ancho según sea necesario */
+    height: 100%;
+    font-size: 4rem;
+    display: inline-box; /* Permite que el contenedor sea considerado como una caja en línea */
+    line-height: 1; /* Puede ser ajustado según tus necesidades */
+    box-decoration-break: clone; /* Evita que las palabras se corten entre líneas */
+    /* background-color: aquamarine; */
+}   
+
+.content-v2{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+}
+
+.panel-left-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 80px;
+    /* background-color:darkslategray; */
+}
+
+.help-buttons-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    /* background-color:violet; */
+}
+
+.know-more{
+    width: 30%;
+    height: 80px;
+    border-radius: 20px;
+    border:0;
+    /* some things for the text design */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background:linear-gradient(90deg, rgb(116, 79, 198), rgb(30, 150, 252));
+}
+
+.guide{
+    width: 30%;
+    height: 80px;
+    border-radius: 20px;
+    border:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background:linear-gradient(-90deg, rgb(116, 79, 198), rgb(30, 150, 252));
+}
+
+.know-more:hover{
+    cursor: pointer;
+    background-color: #434877;
+    box-shadow: 0px 5px 10px 0px rgb(89, 46, 131, .5);
+}
+
+.guide:hover{
+    cursor: pointer;
+    background-color: #434877;
+    box-shadow: 0px 5px 10px 0px rgb(89, 46, 131, .5);
+}
+
+.panel-right-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* background-color:chocolate; */
+}
+
+.intervals-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    /* align to center */
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    /* background-color:tomato; */
+}
+
 
 .focus{
-    width: 180px;
-    color: #434877;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 8px;
-    background-color: rgb(156, 187, 216);
-    border-radius: 20px 0px 20px 0px;
-    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.20);
-    position: absolute;
-    right: 180px;
-}
-
-.relax{
-    width: 180px;
-    color: #434877;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 8px;
-    background-color: rgb(156, 187, 216, 0.5);
-    border-radius: 20px 0px 20px 0px;
-    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
-    position: absolute;
-    left: 185px;
-}
-
-.btns-timer-container{
-    width: 100%;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border-style: none;
-    color:azure;
-    font-weight: bold;
-    margin-top:50px;
-    gap:20px;
-}
-
-.btn-timer{
-    width: 150px;
-    height: 50px;
-    border-radius:10px;
-    background-color: #1E96FC;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-    border-style: none;
-    color:azure;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.btn-timer-stop{
-    cursor: default;
-}
-
-.btn-timer:hover{
-    background-color: #434877;
-    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.20);
-}
-
-.period-container{
-    width: 100%;
+    width: 200px;
     height: 80px;
+    border-radius: 20px 0px 0px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    background-color: #1E96FC;
-    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.20);
-    margin-top: 130px;
-}
-
-.periods-text{
-    color:azure;
-}
-
-/* .container{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(32, 37, 44);
-    overflow: auto; -> comment: Agregar esta propiedad para manejar el desbordamiento 
-}
-
-.info{
-    width: 400px;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    comment: background-color:darkslategray; 
-}
-
-.info p{
     color: white;
-    font-size: 15px;
-    font-weight: 500;
-    text-align: start;
-    padding: 20px;
-    comment: background-color: red;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(116, 79, 198, 1);
 }
 
-.clock-container{
-    width: 400px;
-    height: 250px;
+.rest{
+    width: 200px;
+    height: 80px;
+    border-radius: 0px 20px 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgba(116, 79, 198, 1);
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    background-color:whitesmoke;
+}
+
+.timer-v2{
+    display: flex;
+    position: relative;
+    width: 30rem;
+    height: 30rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.20);
+    background:linear-gradient(100deg, rgb(116, 79, 198), rgb(84, 101, 255));
+}
+
+.circle{
+    height: 26rem;
+    width: 26rem;
+    border-radius: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:lightblue;
+    border: rgb(42, 30, 92) 10px solid;
+    background:linear-gradient(100deg, rgb(116, 79, 198), rgb(84, 101, 255));
 }
 
-.clock-container .clock{
-    width: 200px;
-    height: 50px;
-    border-radius:10px;
-    background-color: white;
+.time{
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+}
+
+.periods-text{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.action-buttons-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    /* background-color:yellow; */
+}
+
+.focus-btn{
+    width: 40%;
+    height: 60px;
+    border-radius: 20px;
+    border:0;
+    /* some things for the text design */
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background:linear-gradient(90deg, rgb(116, 79, 198), rgb(30, 150, 252));   
 }
 
-.btn-clock{
-    width: 100px;
-    height: 50px;
-    border-radius:10px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-    padding: 10px;
+.focus-btn:hover{
     cursor: pointer;
-    border-style: none;
+    background-color: #434877;
+    box-shadow: 0px 5px 10px 0px rgb(89, 46, 131, .5);
+    transition: all 0.3s ease;
 }
 
-.btn-clock:hover{
-    background-color: #e6e6e6;
-} */
+.reset-btn{
+    width: 40%;
+    height: 60px;
+    border-radius: 20px;
+    border:0;
+    /* some things for the text design */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background:linear-gradient(-90deg, rgb(116, 79, 198), rgb(30, 150, 252));
+}
+
+.reset-btn:hover{
+    cursor: pointer;
+    background-color: #434877;
+    box-shadow: 0px 5px 10px 0px rgb(89, 46, 131, .5);
+    transition: all 0.3s ease;
+}

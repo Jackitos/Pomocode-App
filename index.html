@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Pomocode Proyect</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles.css">
+        <title>Pomocode Proyect</title>
+    </head>
 
-<body>
-    <main>
-        <h1>Pomocode Proyect</h1>
-        <hr>
-        <div class="content">
-            <div class="welcome">
-                <p>Hola! 👋</p>
-                <p>Bienvenido a Pomocode.
-                    Gracias a esta técnica de estudio llamada "pomodoro" podrás organizar tu tiempo
-                    y estar más centrado en sus tareas diarias.</p>
-                <div class="btns">
-                    <button class="btn-welcome">Conocer más 🤓</button>
-                    <button class="btn-welcome">Cómo usarlo? 🚀</button>
+    <body>
+        <div class="circle" id="bottom-left"></div>
+        <div class="circle" id="up-right"></div>
+        <div class="circle" id="up-left"></div>
+        <div class="circle" id="bottom-right"></div>
+        <main>
+            <h1>Pomocode Proyect</h1>
+            <hr>
+            <div class="content-v2">
+                <div class="panel-left-container">
+                    <h2>Hola! 👋 <br>
+                        Bienvenido a Pomocode. Gracias a esta técnica de estudio
+                        llamada "pomodoro" podrás organizar tu tiempo y estar
+                        más centrado en sus tareas diarias.</h2>
+
+                    <div class="help-buttons-container">
+                        <button class="know-more">Conocer más 🤓</button>
+                        <button class="guide">Guia de uso 🚀</button>
+                    </div>
+                </div>
+
+                <div class="panel-right-container">
+                    <div class="intervals-container">
+                        <div class="focus">Focus</div>
+                        <div class="rest">Rest</div>
+                    </div>
+
+                    <div class="timer-v2">
+                        <div class="circle">
+                            <div class="time" id="timer">25:00</div>
+                            <p class="periods-text">Periodo/s: <span>0</span></p>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons-container">
+                        <button class="focus-btn">Comenzar</button>
+                        <button class="reset-btn">Resetear</button>
+                    </div>
                 </div>
             </div>
-            <div class="pomodoro">
-                <div class="timer">
-                    <!-- <p>25:00</p> -->
-                </div>
-                <ul>
-                    <li class="focus">Concentración</li>
-                    <li class="relax">Descanso</li>
-                </ul>
-                <div class="btns-timer-container">
-                    <button class="btn-timer" id="start-timer">Comenzar</button>
-                    <button class="btn-timer" id="reset-timer">Resetear</button>
-                </div>
-                <div class="period-container">
-                    <p class="periods-text">Periodo/s: <span>0</span></p>
-                </div>
-            </div>
-        </div>
-    </main>
-</body>
-<script src="./js/index.js" type="module"></script>
+        </main>
+    </body>
+    <!-- <script src="./js/index.js" type="module"></script> -->
 
 </html>
