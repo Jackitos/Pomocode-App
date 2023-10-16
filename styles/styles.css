@@ -12,49 +12,50 @@ body {
     overflow: hidden;
     position: relative;
     background-image:linear-gradient(80deg, rgb(89,46,131), rgb(120, 139, 255));;
+    background-size: 300% 300%;
 }
 
-.circle {
+/* .circle {
     position: absolute;
     border-radius: 50%;
     background-size: cover;
-}
+} */
 
-#bottom-left {
-    left: 0;
-    bottom: 0;
-    width: 800px;
-    height: 800px;
-    background: linear-gradient(80deg, rgb(77, 45, 82), rgb(3, 37, 78, .2)), url(''); /* Fondo del círculo */
-    filter: blur(100px);
-}
+/* #bottom-left { */
+    /* left: 0; */
+    /* bottom: 0; */
+    /* width: 800px; */
+    /* height: 800px; */
+    /* background: linear-gradient(80deg, rgb(77, 45, 82), rgb(3, 37, 78, .2)), url(''); Fondo del círculo */
+    /* filter: blur(100px); */
+/* } */
 
-#up-right {
-    right: 0;
-    top: 0;
-    width: 500px;
-    height: 500px;
-    background: linear-gradient(80deg, rgb(84, 101, 255), rgb(120, 139, 255, .4)), url(''); /* Fondo del círculo */
-    filter: blur(80px);
-}
+/* #up-right { */
+    /* right: 0; */
+    /* top: 0; */
+    /* width: 500px; */
+    /* height: 500px; */
+    /* background: linear-gradient(80deg, rgb(84, 101, 255), rgb(120, 139, 255, .4)), url(''); Fondo del círculo */
+    /* filter: blur(80px); */
+/* } */
 
-#up-left {
-    left: 0;
-    top: 0;
-    width: 500px;
-    height: 500px;
-    background: linear-gradient(80deg, rgb(42, 30, 82, .2), rgb(89, 46, 131)), url(''); /* Fondo del círculo */
-    filter: blur(80px);
-}
+/* #up-left { */
+    /* left: 0; */
+    /* top: 0; */
+    /* width: 500px; */
+    /* height: 500px; */
+    /* background: linear-gradient(80deg, rgb(42, 30, 82, .2), rgb(89, 46, 131)), url(''); Fondo del círculo */
+    /* filter: blur(80px); */
+/* } */
 
-#bottom-right {
-    right: 0;
-    bottom: 0;
-    width: 800px;
-    height: 800px;
-    background: linear-gradient(80deg, rgb(36, 32, 56), rgb(37, 40, 61, .3)), url(''); /* Fondo del círculo */
-    filter: blur(80px);
-}
+/* #bottom-right { */
+    /* right: 0; */
+    /* bottom: 0; */
+    /* width: 800px; */
+    /* height: 800px; */
+    /* background: linear-gradient(80deg, rgb(36, 32, 56), rgb(37, 40, 61, .3)), url(''); Fondo del círculo */
+    /* filter: blur(80px); */
+/* } */
 
 main {
     position: relative;
@@ -72,7 +73,7 @@ hr {
     margin-bottom: 20px;
     height: 20px;
     border: 0;
-    width: 80%;
+    width: 75%; /*  Le puse 75% (5% menos que antes) ya que el nuevo temporizador con el progressBar esta mal posicionado por el momento    */
     border-radius: 5px;
     background: linear-gradient(90deg, #788BFF 8.34%, #9CBBD8);
 }
@@ -159,6 +160,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: space-between;
     /* background-color:chocolate; */
 }
 
@@ -202,7 +204,7 @@ h2 {
     background-color:whitesmoke;
 }
 
-.timer-v2{
+/* .timer-v2{
     display: flex;
     position: relative;
     width: 30rem;
@@ -232,11 +234,12 @@ h2 {
     color: white;
 }
 
+
 .periods-text{
     font-size: 1.5rem;
     font-weight: bold;
     color: white;
-}
+} */
 
 .action-buttons-container{
     width: 100%;

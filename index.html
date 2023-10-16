@@ -4,7 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="./styles/styles.css">
+        <link rel="stylesheet" href="./styles/progressBar-style-test.css">
         <title>Pomocode Proyect</title>
     </head>
 
@@ -35,12 +36,27 @@
                         <div class="rest">Rest</div>
                     </div>
 
-                    <div class="timer-v2">
+                    <!-- TIMER OPTION 1 -->
+                    <!-- <div class="timer-v2">
                         <div class="circle">
-                            <div class="time" id="timer">25:00</div>
+                            <div class="time" id="timer"></div>
                             <p class="periods-text">Periodo/s: <span>0</span></p>
                         </div>
-                    </div>
+                    </div> -->
+
+
+                    <!-- TIMER OPTION 2 (With Progress Bar) -->
+                        <div class="circle-container center">
+                            <div class="semicircle"></div>
+                            <div class="semicircle"></div>
+                            <div class="semicircle"></div>
+                            <div class="outermost-circle">
+                                <div class="timer-text">
+                                    <div class="time" id="timer"></div>
+                                    <p class="periods-text">Periodo/s: <span>0</span></p>    
+                                </div>
+                            </div>
+                        </div>
 
                     <div class="action-buttons-container">
                         <button class="focus-btn">Comenzar</button>
@@ -50,6 +66,7 @@
             </div>
         </main>
     </body>
-    <!-- <script src="./js/index.js" type="module"></script> -->
+    <script src="./js/index.js" type="module"></script>
+    <script src="./js/progressBar-test.js" type="module"></script>
 
 </html>

@@ -1,3 +1,5 @@
+import {progressBar,stopProgressBar} from './progressBar-test.js';
+
 const d = document;
 
 const intervalTypes = Object.freeze({
@@ -8,7 +10,7 @@ const intervalTypes = Object.freeze({
 export default function clock(clock, btnPlay, btnReset) {
     const work = {
         defaultDuration: 10,
-        actualDuration: 10,
+        actualDuration:  10,
         reset() {
             this.actualDuration = this.defaultDuration;
         },
@@ -47,12 +49,20 @@ export default function clock(clock, btnPlay, btnReset) {
     // funcion que inicia el intervalo
     function startPomodoro() {
         toggleButtonState(true); // Cambia el estado del botón
+
+        const progressBarOptions = {
+            totalTime: currentIntervalType.actualDuration,
+            updateCallback: updateClockDisplay,
+        };
+        progressBar(progressBarOptions);
+
         currentInterval = setInterval(() => {
             if (currentIntervalType.actualDuration > 0) {
                 currentIntervalType.actualDuration--;
                 updateClockDisplay(currentIntervalType.actualDuration);
             } else {
                 clearInterval(currentInterval); // Detener el temporizador actual
+                stopProgressBar(); // Detener la barra de progreso
                 if (currentIntervalType === work) {
                     currentIntervalType.reset();
                     currentIntervalType = rest;
@@ -75,15 +85,17 @@ export default function clock(clock, btnPlay, btnReset) {
     /* funcion que reinicia el reloj pomodoro completo */
     function resetClock() {
         clearInterval(currentInterval);
+        stopProgressBar();
         periods = 0; // reinicia los periodos
         currentIntervalType = work; // reinicia el tipo de intervalo
         work.reset(); // Resetear el tiempo de trabajo
         rest.reset(); // Resetear el tiempo de descanso
         updateClockDisplay(work.defaultDuration); // actualiza el reloj
+
         d.querySelector(".periods-text").innerText = `Periodo/s: ${periods}`; // actualiza el contador de periodos
+
         toggleButtonState(false); // Cambia el estado del botón
     }
-
     updateClockDisplay(work.defaultDuration); // actualiza el reloj al cargar la pagina por primera vez
 
     d.querySelector(btnPlay).addEventListener("click", startPomodoro);
